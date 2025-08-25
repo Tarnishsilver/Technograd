@@ -1,0 +1,184 @@
+/* Reset & Fonts */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: "Reddit Sans",'Cinzel', serif;
+  background: #1b1b1b;
+  color: #f5f5f5;
+  overflow: hidden; 
+}
+
+/* Header */
+header {
+  background-color: #111;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  border-bottom: 2px solid #e74c3c;
+  z-index: 10;
+  position: relative;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.8rem;
+  color: gold;
+}
+.logo img { height: 40px; width: auto; margin-bottom: 8px; }
+nav ul { list-style: none; display: flex; gap: 1.5rem; }
+nav ul li a {
+  text-decoration: none;
+  color: #f5f5f5;
+  font-size: 1rem;
+  transition: color 0.3s;
+}
+nav ul li a:hover { color: gold; }
+nav ul li:nth-child(2) a { color: yellow; }
+
+/* Content Wrapper */
+.content-wrapper {
+  position: relative;
+  height: calc(100vh - 70px); /* full screen minus header */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Sections  */
+.hero, .cards {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.6s ease;
+}
+.hero.visible, .cards.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Hero */
+.hero {
+  background: url('./bg4.jpg') no-repeat center center/cover;
+  text-align: center;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1;
+}
+.hero-content {
+  z-index: 2;
+  max-width: 800px;
+}
+.hero h1 { font-size: 3rem; color: gold; margin-bottom: 1rem; }
+.hero p { font-size: 1.2rem; margin-bottom: 2rem; }
+.button {
+  background: #e74c3c;
+  color: #fff;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.3s, transform 0.2s;
+  border: 2px solid white;
+}
+.button:hover { background: #c0392b; transform: scale(1.05); }
+
+/* Cards Section */
+.cards {
+  background: url('./bg4.jpg') no-repeat center center/cover;
+  text-align: center;
+  flex-direction: column;
+  overflow-y: auto;
+  padding: 3rem 2rem;
+  background-attachment: fixed;
+}
+.cards::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(8px);
+  z-index: 0;
+}
+.cards > * { position: relative; z-index: 1; }
+
+/* Cards Grid */
+.cards-grid {
+  width: min(1200px, 94vw);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.card {
+  background: rgba(20, 20, 20, 0.75);
+  backdrop-filter: blur(10px) saturate(150%);
+  -webkit-backdrop-filter: blur(10px) saturate(150%);
+  border: 1px solid rgba(255, 215, 0, 0.4);
+  border-radius: 20px;
+  padding: 2rem 1.5rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.3s;
+  display: flex;
+  flex-direction: column;
+  min-height: 340px; 
+}
+.card:hover {
+  transform: translateY(-10px) scale(1.04);
+  box-shadow: 0 15px 40px rgba(231, 76, 60, 0.8);
+  border-color: rgba(231, 76, 60, 0.8);
+}
+
+/* Card Title */
+.card-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: gold;
+  text-align: center;
+  margin-bottom: 1.2rem;
+  text-shadow: 0 0 8px rgba(255,215,0,0.6);
+}
+
+/* Card Description */
+.card-description {
+  font-size: 1rem;
+  color: #eee;
+  line-height: 1.6;
+  flex-grow: 1;
+  margin-bottom: 1.5rem;
+  text-align: justify;
+}
+
+/* Card Timing */
+.card-time {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #ff6b6b;
+  text-align: right;
+}
+
+/* Back Button */
+.back-container { display: flex; justify-content: center; }
+.back-button {
+  background: #e74c3c;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+  border: 2px solid white;
+}
+.back-button:hover { background: #c0392b; transform: scale(1.05); }
